@@ -1,4 +1,4 @@
-﻿using Todd.ApplicationKernel.Base.Types;
+using Todd.ApplicationKernel.Base.Types;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;

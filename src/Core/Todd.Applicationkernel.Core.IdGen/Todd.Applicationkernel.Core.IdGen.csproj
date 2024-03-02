@@ -6,13 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  
   <ItemGroup>
-    <PackageReference Include="Consul" Version="1.7.14.3" />
+    <PackageReference Include="IdGen.DependencyInjection" Version="3.0.0" />
   </ItemGroup>
 
-  
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Base\Todd.ApplicationKernel.Base\Todd.ApplicationKernel.Base.csproj" />
+    <ProjectReference Include="..\..\Base\Todd.ApplicationKernel.Base\Todd.ApplicationKernel.Base.csproj" />
   </ItemGroup>
+
 </Project>

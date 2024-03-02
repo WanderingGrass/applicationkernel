@@ -1,6 +1,5 @@
-﻿namespace Todd.ApplicationKernel.Base.Types
+﻿namespace Todd.ApplicationKernel.Base.Types;
+
+public class DecoratorAttribute : Attribute
 {
-    public class DecoratorAttribute : Attribute
-    {
-    }
 }
