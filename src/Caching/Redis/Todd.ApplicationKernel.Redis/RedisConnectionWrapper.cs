@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Caching.StackExchangeRedis;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System.Net;
+using Todd.ApplicationKernel.CachingCore;
 
 namespace Todd.ApplicationKernel.Redis;
 

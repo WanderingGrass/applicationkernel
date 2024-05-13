@@ -6,14 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  
   <ItemGroup>
-    <PackageReference Include="Consul" Version="1.7.14.3" />
+    <PackageReference Include="Microsoft.Garnet" Version="1.0.1" />
   </ItemGroup>
-
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\Base\Todd.ApplicationKernel.Base\Todd.ApplicationKernel.Base.csproj" />
-    <ProjectReference Include="..\..\..\Core\Todd.Applicationkernel.Core.Abstractions\Todd.Applicationkernel.Core.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Core\Todd.ApplicationKernel.CachingCore\Todd.ApplicationKernel.CachingCore.csproj" />
   </ItemGroup>
+  
 </Project>

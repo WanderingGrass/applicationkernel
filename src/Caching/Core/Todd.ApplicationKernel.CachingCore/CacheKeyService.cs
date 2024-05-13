@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
 
-namespace Todd.ApplicationKernel.Redis.Core;
+namespace Todd.ApplicationKernel.CachingCore;
 
 public abstract partial class CacheKeyService : ICacheKeyService
 {

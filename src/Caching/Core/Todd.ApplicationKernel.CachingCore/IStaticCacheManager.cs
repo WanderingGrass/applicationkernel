@@ -1,6 +1,6 @@
-﻿using StackExchange.Redis;
+using StackExchange.Redis;
 
-namespace Todd.ApplicationKernel.Redis.Core;
+namespace Todd.ApplicationKernel.CachingCore;
 
 /// <summary>
 /// Represents a manager for caching between HTTP requests (long term caching)

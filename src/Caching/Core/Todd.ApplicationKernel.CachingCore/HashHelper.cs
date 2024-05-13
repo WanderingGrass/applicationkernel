@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace Todd.ApplicationKernel.Redis.Core;
+namespace Todd.ApplicationKernel.CachingCore;
 
 /// <summary>
 /// Hash helper class

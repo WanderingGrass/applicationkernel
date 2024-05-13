@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System.Text;
+using Todd.ApplicationKernel.CachingCore;
 
-namespace Todd.ApplicationKernel.Redis.Core;
+namespace Todd.ApplicationKernel.Redis;
 
 public partial class RedisCacheLocker : ILocker
 {

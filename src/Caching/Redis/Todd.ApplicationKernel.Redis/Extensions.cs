@@ -1,8 +1,8 @@
-﻿using Todd.ApplicationKernel.Redis.Builders;
-using Todd.ApplicationKernel.Redis.Core;
+using Todd.ApplicationKernel.Redis.Builders;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using Todd.ApplicationKernel.Base;
+using Todd.ApplicationKernel.CachingCore;
 
 namespace Todd.ApplicationKernel.Redis;
 

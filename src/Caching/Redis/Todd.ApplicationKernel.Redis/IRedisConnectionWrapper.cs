@@ -1,4 +1,4 @@
-﻿using StackExchange.Redis;
+using StackExchange.Redis;
 using System.Net;
 
 namespace Todd.ApplicationKernel.Redis;

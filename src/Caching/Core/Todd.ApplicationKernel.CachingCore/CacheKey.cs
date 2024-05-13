@@ -1,4 +1,4 @@
-namespace Todd.ApplicationKernel.Redis.Core;
+namespace Todd.ApplicationKernel.CachingCore;
 
 public partial class CacheKey
 {

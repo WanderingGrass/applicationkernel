@@ -1,4 +1,6 @@
-﻿namespace Todd.ApplicationKernel.Redis.Builders;
+using Todd.ApplicationKernel.CachingCore;
+
+namespace Todd.ApplicationKernel.Redis.Builders;
 internal sealed class RedisOptionsBuilder : IRedisOptionsBuilder
 {
     private readonly RedisOptions _options = new();

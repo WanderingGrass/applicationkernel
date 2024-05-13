@@ -1,4 +1,4 @@
-﻿namespace Todd.ApplicationKernel.Redis;
+namespace Todd.ApplicationKernel.CachingCore;
 
 public class RedisOptions
 {

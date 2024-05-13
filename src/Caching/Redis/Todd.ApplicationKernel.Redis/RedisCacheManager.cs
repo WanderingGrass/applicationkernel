@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Collections.Concurrent;
+using Todd.ApplicationKernel.CachingCore;
 
-namespace Todd.ApplicationKernel.Redis.Core;
+
+namespace Todd.ApplicationKernel.Redis;
 
 public class RedisCacheManager : CacheKeyService, IStaticCacheManager
 {
@@ -181,7 +182,7 @@ public class RedisCacheManager : CacheKeyService, IStaticCacheManager
         var prepared = LuaScript.Prepare(script);
         return db.ScriptEvaluate(prepared, new { key = "lock_name", value = obj });
     }
-  
+
     public async Task<bool> ExistsAsync(CacheKey key)
     {
         var db = await _connectionWrapper.GetDatabaseAsync();
@@ -291,7 +292,7 @@ public class RedisCacheManager : CacheKeyService, IStaticCacheManager
 
     #region List
 
-    public async  Task<long> ListAddToLeftAsync<T>(CacheKey key, T item, When when = When.Always, CommandFlags flags = CommandFlags.None)
+    public async Task<long> ListAddToLeftAsync<T>(CacheKey key, T item, When when = When.Always, CommandFlags flags = CommandFlags.None)
     {
         var db = await _connectionWrapper.GetDatabaseAsync();
 
