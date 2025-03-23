@@ -4,7 +4,7 @@ using System.Text;
 using FluentAssertions;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
-using Todd.ApplicationKernel.Redis.Core;
+using Todd.ApplicationKernel.Redis;
 
 namespace Todd.ApplicationKernel.Caching;
 

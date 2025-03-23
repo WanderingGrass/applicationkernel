@@ -1,10 +1,12 @@
 using Consul;
 using Todd.Applicationkernel.Core.Abstractions;
+using Todd.ApplicationKernel.Base;
 
 namespace Todd.ApplicationKernel.Discovery.Consul.Options
 {
     public class ConsulClusteringOptions
     {
+
         /// <summary>
         /// Consul KV root folder name.
         /// </summary>
@@ -48,6 +50,22 @@ namespace Todd.ApplicationKernel.Discovery.Consul.Options
             {
                 throw new ApplicationKernelConfigurationException($"No callback specified. Use the {GetType().Name}.{nameof(ConsulClusteringOptions.ConfigureConsulClient)} method to configure the consul client.");
             }
+        }
+    }
+    public class ConsulClusteringOptionsValidator<TOptions> : IConfigurationValidator where TOptions : ConsulClusteringOptions
+    {
+        public ConsulClusteringOptionsValidator(TOptions options, string name = null)
+        {
+            Options = options;
+            Name = name;
+        }
+
+        public TOptions Options { get; }
+        public string Name { get; }
+
+        public virtual void ValidateConfiguration()
+        {
+            Options.Validate(Name);
         }
     }
 }

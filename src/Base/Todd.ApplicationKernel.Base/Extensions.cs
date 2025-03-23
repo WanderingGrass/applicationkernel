@@ -1,4 +1,4 @@
-﻿using Todd.ApplicationKernel.Base.Types;
+using Todd.ApplicationKernel.Base.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +15,6 @@ public static class Extensions
         {
             sectionName = SectionName;
         }
-
         var builder = ApplicationKernelBuilder.Create(services, configuration);
         var options = builder.GetOptions<AppOptions>(sectionName);
         builder.Services.AddMemoryCache();
@@ -25,10 +24,8 @@ public static class Extensions
         {
             return builder;
         }
-
         var version = options.DisplayVersion ? $" {options.Version}" : string.Empty;
         Console.WriteLine(Figgle.FiggleFonts.Doom.Render($"{options.Name}{version}"));
-
         return builder;
     }
 

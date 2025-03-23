@@ -1,5 +1,4 @@
 using FreeSql;
-using IdGen.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Todd.ApplicationKernel.Base;
 

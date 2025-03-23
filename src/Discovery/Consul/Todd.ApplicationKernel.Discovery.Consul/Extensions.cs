@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Todd.ApplicationKernel.Base;
 using Todd.ApplicationKernel.Discovery.Consul.Options;
 
@@ -17,6 +18,17 @@ namespace Todd.ApplicationKernel.Discovery.Consul
                 builder.Configure(configureOptions);
             }
             return builder;
+        }
+        public static IApplicationKernelBuilder AddConsul(this IApplicationKernelBuilder builder,
+             Action<OptionsBuilder<ConsulClusteringOptions>> configureOptions)
+        {
+
+            return builder.ConfigureServices(
+                 services =>
+                 {
+                     configureOptions?.Invoke(services.AddOptions<ConsulClusteringOptions>());
+                 });
+
         }
     }
 }

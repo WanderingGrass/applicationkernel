@@ -47,7 +47,20 @@ public sealed class ApplicationKernelBuilder : IApplicationKernelBuilder
     public IServiceProvider Build()
     {
         var serviceProvider = _services.BuildServiceProvider();
-        _buildActions.ForEach(a => a(serviceProvider));
+        _buildActions.ForEach(a =>
+        {
+            ValidateSystemConfiguration(serviceProvider);
+            a(serviceProvider);
+        });
+
+        static void ValidateSystemConfiguration(IServiceProvider serviceProvider)
+        {
+            var validators = serviceProvider.GetServices<IConfigurationValidator>();
+            foreach (var validator in validators)
+            {
+                validator.ValidateConfiguration();
+            }
+        }
         return serviceProvider;
     }
 }

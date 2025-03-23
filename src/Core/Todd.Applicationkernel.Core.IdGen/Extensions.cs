@@ -9,14 +9,14 @@ namespace Todd.Applicationkernel.Core.IdGen
     {
         private const string SectionName = "idGen";
     
-        public static IApplicationKernelBuilder AddIdGen(this IApplicationKernelBuilder builder, string sectionName = SectionName, Func<IdGeneratorOptions> idGeneratorOsptions=null)
+        public static IApplicationKernelBuilder AddIdGen(this IApplicationKernelBuilder builder, string sectionName = SectionName, Func<IdGeneratorOptions> idGeneratorOpstions=null)
         {
             if (string.IsNullOrWhiteSpace(sectionName))
             {
                 sectionName = SectionName;
             }
             var options = builder.GetOptions<IdGenOptions>(sectionName);
-            return builder.AddIdGen(options, idGeneratorOsptions);
+            return builder.AddIdGen(options, idGeneratorOpstions);
         }
         public static IApplicationKernelBuilder AddIdGen(this IApplicationKernelBuilder builder, IdGenOptions options,Func<IdGeneratorOptions> idGeneratorOsptions)
         {
