@@ -2,7 +2,7 @@ using Consul;
 using Todd.Applicationkernel.Core.Abstractions;
 using Todd.ApplicationKernel.Base;
 
-namespace Todd.ApplicationKernel.Discovery.Consul.Options
+namespace Todd.ApplicationKernel.Discovery
 {
     public class ConsulClusteringOptions
     {

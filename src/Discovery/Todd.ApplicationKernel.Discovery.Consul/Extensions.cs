@@ -3,10 +3,11 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Todd.Applicationkernel.Core.Abstractions.Discovery;
 using Todd.ApplicationKernel.Base;
-using Todd.ApplicationKernel.Discovery.Consul.Options;
 
-namespace Todd.ApplicationKernel.Discovery.Consul
+
+namespace Todd.ApplicationKernel.Discovery
 {
     public static class Extensions
     {
@@ -16,6 +17,7 @@ namespace Todd.ApplicationKernel.Discovery.Consul
             if (configureOptions != null)
             {
                 builder.Configure(configureOptions);
+                builder.Services.AddSingleton<IServiceDiscoveryProvider, ConsulServiceDiscoveryProvider>();
             }
             return builder;
         }
@@ -27,6 +29,7 @@ namespace Todd.ApplicationKernel.Discovery.Consul
                  services =>
                  {
                      configureOptions?.Invoke(services.AddOptions<ConsulClusteringOptions>());
+                     services.AddSingleton<IServiceDiscoveryProvider, ConsulServiceDiscoveryProvider>();
                  });
 
         }
