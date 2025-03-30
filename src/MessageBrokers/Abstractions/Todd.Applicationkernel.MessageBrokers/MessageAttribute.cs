@@ -1,6 +1,6 @@
 using System;
 
-namespace Todd.Applicationkernel.MessageBrokers.MessageBrokers;
+namespace Todd.Applicationkernel.MessageBrokers;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class MessageAttribute : Attribute

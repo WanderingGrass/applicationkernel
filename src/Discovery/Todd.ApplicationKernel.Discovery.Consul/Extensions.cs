@@ -3,11 +3,12 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Todd.Applicationkernel.Core.Abstractions.Discovery;
+using Todd.Applicationkernel.Core.Discovery;
 using Todd.ApplicationKernel.Base;
+using Todd.ApplicationKernel.Discovery.Consul.Options;
 
 
-namespace Todd.ApplicationKernel.Discovery
+namespace Todd.ApplicationKernel.Discovery.Consul
 {
     public static class Extensions
     {

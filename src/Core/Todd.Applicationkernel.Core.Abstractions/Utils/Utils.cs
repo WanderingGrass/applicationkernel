@@ -35,7 +35,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
             {
                 return putInBrackets
                     ? toString != null ? $"[{toString(firstValue)}]" : firstValue == null ? "[null]" : $"[{firstValue}]"
-                    : toString != null ? toString(firstValue) : firstValue == null ? "null" : (firstValue.ToString() ?? "");
+                    : toString != null ? toString(firstValue) : firstValue == null ? "null" : firstValue.ToString() ?? "";
             }
 
             var sb = new StringBuilder();

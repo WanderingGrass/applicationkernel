@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace Todd.Auth;
+namespace Todd.ApplicationKernel.Auth;
 
 public class AuthAttribute : AuthorizeAttribute
 {

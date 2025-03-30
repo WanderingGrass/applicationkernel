@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Todd.Auth;
+namespace Todd.ApplicationKernel.Auth;
 
 public class AccessTokenValidatorMiddleware : IMiddleware
 {
@@ -34,6 +34,6 @@ public class AccessTokenValidatorMiddleware : IMiddleware
             return;
         }
 
-        context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+        context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
     }
 }

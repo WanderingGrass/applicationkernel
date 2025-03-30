@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Todd.ApplicationKernel.Discovery
+namespace Todd.ApplicationKernel.Discovery.ZooKeeper.Options
 {
     public class ZooKeeperClusteringOptions
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Http;
 
-namespace Todd.Auth;
+namespace Todd.ApplicationKernel.Auth;
 
 internal sealed class DisabledAuthenticationPolicyEvaluator : IPolicyEvaluator
 {

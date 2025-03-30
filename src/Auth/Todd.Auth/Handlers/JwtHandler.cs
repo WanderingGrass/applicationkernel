@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using Todd.Auth.Dates;
 using Microsoft.IdentityModel.Tokens;
+using Todd.ApplicationKernel.Auth.Dates;
 
-namespace Todd.Auth.Handlers;
+namespace Todd.ApplicationKernel.Auth.Handlers;
 
 internal sealed class JwtHandler : IJwtHandler
 {

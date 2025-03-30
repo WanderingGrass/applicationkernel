@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Todd.Applicationkernel.MessageBrokers.MessageBrokers;
+namespace Todd.Applicationkernel.MessageBrokers;
 
 public class MessagePropertiesAccessor : IMessagePropertiesAccessor
 {
@@ -20,7 +20,7 @@ public class MessagePropertiesAccessor : IMessagePropertiesAccessor
 
             if (value != null)
             {
-                Holder.Value = new MessageContextHolder {Properties = value};
+                Holder.Value = new MessageContextHolder { Properties = value };
             }
         }
     }

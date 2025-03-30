@@ -1,8 +1,6 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Todd.Auth.Handlers;
-using Todd.Auth.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Builder;
@@ -10,8 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Todd.ApplicationKernel.Base;
+using Todd.ApplicationKernel.Auth.Services;
+using Todd.ApplicationKernel.Auth.Handlers;
 
-namespace Todd.Auth;
+namespace Todd.ApplicationKernel.Auth;
 
 public static class Extensions
 {
@@ -86,7 +86,7 @@ public static class Extensions
                 var keyType = certificate.HasPrivateKey ? "with private key" : "with public key only";
                 Console.WriteLine($"Loaded X.509 certificate from location: '{options.Certificate.Location}' {keyType}.");
             }
-                
+
             if (!string.IsNullOrWhiteSpace(options.Certificate.RawData))
             {
                 var rawData = Convert.FromBase64String(options.Certificate.RawData);

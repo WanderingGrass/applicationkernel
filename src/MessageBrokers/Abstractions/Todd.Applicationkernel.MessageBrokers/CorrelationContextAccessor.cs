@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Todd.Applicationkernel.MessageBrokers.MessageBrokers;
+namespace Todd.Applicationkernel.MessageBrokers;
 
 public class CorrelationContextAccessor : ICorrelationContextAccessor
 {
@@ -20,7 +20,7 @@ public class CorrelationContextAccessor : ICorrelationContextAccessor
 
             if (value != null)
             {
-                Holder.Value = new CorrelationContextHolder {Context = value};
+                Holder.Value = new CorrelationContextHolder { Context = value };
             }
         }
     }

@@ -2,7 +2,7 @@ using Consul;
 using Todd.Applicationkernel.Core.Abstractions;
 using Todd.ApplicationKernel.Base;
 
-namespace Todd.ApplicationKernel.Discovery
+namespace Todd.ApplicationKernel.Discovery.Consul.Options
 {
     public class ConsulClusteringOptions
     {
@@ -41,14 +41,14 @@ namespace Todd.ApplicationKernel.Discovery
 
         public ConsulClusteringOptions()
         {
-            this.CreateClient = () => new ConsulClient();
+            CreateClient = () => new ConsulClient();
         }
 
         internal void Validate(string name)
         {
             if (CreateClient is null)
             {
-                throw new ApplicationKernelConfigurationException($"No callback specified. Use the {GetType().Name}.{nameof(ConsulClusteringOptions.ConfigureConsulClient)} method to configure the consul client.");
+                throw new ApplicationKernelConfigurationException($"No callback specified. Use the {GetType().Name}.{nameof(ConfigureConsulClient)} method to configure the consul client.");
             }
         }
     }

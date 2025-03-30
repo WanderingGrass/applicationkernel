@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Primitives;
 
-namespace Todd.Auth.Services;
+namespace Todd.ApplicationKernel.Auth.Services;
 
 internal sealed class InMemoryAccessTokenService : IAccessTokenService
 {

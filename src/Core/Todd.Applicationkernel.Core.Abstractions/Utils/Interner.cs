@@ -14,6 +14,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
     {
         /* Recommended cache sizes, based on expansion policy of ConcurrentDictionary
         // Internal implementation of ConcurrentDictionary resizes to prime numbers (not divisible by 3 or 5 or 7)
+        扩展策略, 为了保证并发性, ConcurrentDictionary 内部会将大小调整为质数(不能被3,5,7整除)
         31
         67
         137
@@ -66,11 +67,11 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <param name="initialSize">The initial size of the interner mapping.</param>
         public Interner(int initialSize = InternerConstants.SIZE_SMALL)
         {
-            int concurrencyLevel = Environment.ProcessorCount; // Default from ConcurrentDictionary class in .NET Core for size 31
+            int concurrencyLevel = Environment.ProcessorCount; // Default from ConcurrentDictionary class in .NET Core for size 31  
             if (initialSize >= InternerConstants.SIZE_MEDIUM) concurrencyLevel *= 4;
             if (initialSize >= InternerConstants.SIZE_LARGE) concurrencyLevel *= 4;
             concurrencyLevel = Math.Min(concurrencyLevel, 1024);
-            this.internCache = new ConcurrentDictionary<TKey, WeakReference<TValue>>(concurrencyLevel, initialSize);
+            internCache = new ConcurrentDictionary<TKey, WeakReference<TValue>>(concurrencyLevel, initialSize);
 
             var period = TimeSpan.FromMinutes(10);
             var dueTime = period + TimeSpan.FromTicks(Random.Shared.Next((int)TimeSpan.TicksPerMinute)); // add some initial jitter

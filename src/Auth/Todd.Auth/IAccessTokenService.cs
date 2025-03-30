@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Todd.Auth;
+namespace Todd.ApplicationKernel.Auth;
 
 public interface IAccessTokenService
 {

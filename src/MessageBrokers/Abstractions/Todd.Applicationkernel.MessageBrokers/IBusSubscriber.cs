@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Todd.Applicationkernel.MessageBrokers.MessageBrokers;
+namespace Todd.Applicationkernel.MessageBrokers;
 
 public interface IBusSubscriber : IDisposable
 {

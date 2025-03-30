@@ -1,4 +1,4 @@
-namespace Todd.Applicationkernel.MessageBrokers.MessageBrokers;
+namespace Todd.Applicationkernel.MessageBrokers;
 
 public interface ICorrelationContextAccessor
 {

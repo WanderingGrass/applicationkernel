@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Todd.Auth;
+namespace Todd.ApplicationKernel.Auth;
 
 public class JsonWebTokenPayload
 {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Todd.Applicationkernel.MessageBrokers.MessageBrokers;
+namespace Todd.Applicationkernel.MessageBrokers;
 
 public interface IMessageProperties
 {

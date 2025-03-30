@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 
 namespace Todd.Applicationkernel.Core.Abstractions
-{
+{ 
     internal readonly struct SpanFormattableIPEndPoint : ISpanFormattable
     {
         private readonly IPEndPoint? _value;

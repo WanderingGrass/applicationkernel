@@ -1,6 +1,6 @@
 using System;
 
-namespace Todd.Auth.Dates;
+namespace Todd.ApplicationKernel.Auth.Dates;
 
 internal static class Extensions
 {
