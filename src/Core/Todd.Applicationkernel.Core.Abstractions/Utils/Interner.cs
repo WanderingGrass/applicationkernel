@@ -47,7 +47,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
     /// Interner is used to optimize garbage collection.
     /// We use it to store objects that are allocated frequently and may have long lifetime. 
     /// This means those object may quickly fill gen 2 and cause frequent costly full heap collections.
-    /// Specifically, a message that arrives to a silo and all the headers and ids inside it may stay alive long enough to reach gen 2.
+    /// Specifically, a message that arrives to a  and all the headers and ids inside it may stay alive long enough to reach gen 2.
     /// Therefore, we store all ids in interner to re-use their memory across different messages.
     /// </summary>
     /// <typeparam name="TKey">Type of objects to be used for intern keys.</typeparam>

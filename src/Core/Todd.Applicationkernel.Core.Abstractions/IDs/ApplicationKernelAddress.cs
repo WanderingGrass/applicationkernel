@@ -49,11 +49,12 @@ namespace Todd.Applicationkernel.Core.Abstractions
         public static ApplicationKernelAddress Zero { get; } = New(new IPAddress(0), 0, 0);
 
         /// <summary>
-        /// Factory for creating new ApplicationKernelAddresses with specified IP endpoint address and silo generation number.
+        /// 用于创建具有指定IP端点地址和存储器生成号的新ApplicationKernelAddresses的工厂。
+        /// Factory for creating new ApplicationKernelAddresses with specified IP endpoint address and  generation number.
         /// </summary>
-        /// <param name="ep">IP endpoint address of the silo.</param>
-        /// <param name="gen">Generation number of the silo.</param>
-        /// <returns>ApplicationKernelAddress object initialized with specified address and silo generation.</returns>
+        /// <param name="ep">IP endpoint address .</param>
+        /// <param name="gen">Generation number.</param>
+        /// <returns>ApplicationKernelAddress object initialized with specified address and  generation.</returns>
         public static ApplicationKernelAddress New(IPEndPoint ep, int gen)
         {
             return ApplicationKernelAddressInterningCache.FindOrCreate((ep.Address, ep.Port, gen),
@@ -62,12 +63,12 @@ namespace Todd.Applicationkernel.Core.Abstractions
         }
 
         /// <summary>
-        /// Factory for creating new ApplicationKernelAddresses with specified IP endpoint address and silo generation number.
+        /// Factory for creating new ApplicationKernelAddresses with specified IP endpoint address and  generation number.
         /// </summary>
-        /// <param name="address">IP address of the silo.</param>
+        /// <param name="address">IP address </param>
         /// <param name="port">Port number</param>
-        /// <param name="generation">Generation number of the silo.</param>
-        /// <returns>ApplicationKernelAddress object initialized with specified address and silo generation.</returns>
+        /// <param name="generation">Generation number .</param>
+        /// <returns>ApplicationKernelAddress object initialized with specified address and  generation.</returns>
         public static ApplicationKernelAddress New(IPAddress address, int port, int generation)
         {
             return ApplicationKernelAddressInterningCache.FindOrCreate((address, port, generation),
@@ -91,8 +92,8 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// </summary>
         public bool IsClient { get { return Generation < 0; } }
 
-        /// <summary> Allocate a new silo generation number. </summary>
-        /// <returns>A new silo generation number.</returns>
+        /// <summary> Allocate a new  generation number. </summary>
+        /// <returns>A new  generation number.</returns>
         public static int AllocateNewGeneration()
         {
             long elapsed = (DateTime.UtcNow.Ticks - epoch) / TimeSpan.TicksPerSecond;
@@ -105,7 +106,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <returns>ApplicationKernelAddress in a standard string format.</returns>
         public string ToParsableString()
         {
-            // This must be the "inverse" of FromParsableString, and must be the same across all silos in a deployment.
+            // This must be the "inverse" of FromParsableString, and must be the same across all s in a deployment.
             // Basically, this should never change unless the data content of ApplicationKernelAddress changes
             if (utf8 != null) return Encoding.UTF8.GetString(utf8);
             return $"{new SpanFormattableIPAddress(Endpoint.Address)}:{Endpoint.Port}@{Generation}";
@@ -154,7 +155,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <returns>New ApplicationKernelAddress object created from the input data.</returns>
         public static ApplicationKernelAddress FromParsableString(string addr)
         {
-            // This must be the "inverse" of ToParsableString, and must be the same across all silos in a deployment.
+            // This must be the "inverse" of ToParsableString, and must be the same across all s in a deployment.
             // Basically, this should never change unless the data content of ApplicationKernelAddress changes
 
             // First is the IPEndpoint; then '@'; then the generation
@@ -176,7 +177,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <returns>New ApplicationKernelAddress object created from the input data.</returns>
         public static ApplicationKernelAddress FromUtf8String(ReadOnlySpan<byte> addr)
         {
-            // This must be the "inverse" of ToParsableString, and must be the same across all silos in a deployment.
+            // This must be the "inverse" of ToParsableString, and must be the same across all s in a deployment.
             // Basically, this should never change unless the data content of ApplicationKernelAddress changes
 
             // First is the IPEndpoint; then '@'; then the generation
@@ -253,12 +254,12 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <inheritdoc />
         public override int GetHashCode() => Endpoint.GetHashCode() ^ Generation;
 
-        /// <summary>Returns a consistent hash value for this silo address.</summary>
-        /// <returns>Consistent hash value for this silo address.</returns>
+        /// <summary>Returns a consistent hash value for this  address.</summary>
+        /// <returns>Consistent hash value for this  address.</returns>
         public int GetConsistentHashCode() => hashCodeSet ? hashCode : CalculateConsistentHashCode();
 
-        /// <summary>Returns a consistent hash value for this silo address.</summary>
-        /// <returns>Consistent hash value for this silo address.</returns>
+        /// <summary>Returns a consistent hash value for this  address.</summary>
+        /// <returns>Consistent hash value for this  address.</returns>
         internal int GetConsistentHashCode(int seed)
         {
             var tmp = (0, 0L, 0L, 0L); // avoid stackalloc overhead by using a fixed size buffer
@@ -345,7 +346,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
         }
 
         /// <summary>
-        /// Two silo addresses match if they are equal or if one generation or the other is 0.
+        /// Two  addresses match if they are equal or if one generation or the other is 0.
         /// </summary>
         /// <param name="other"> The other ApplicationKernelAddress to compare this one with. </param>
         /// <returns>Returns <c>true</c> if the two ApplicationKernelAddresses are considered to match -- if they are equal or if one generation or the other is 0. </returns>
@@ -368,7 +369,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <returns>
         /// <see langword="true"/> if the provided value represents the same logical server as this value, otherwise <see langword="false"/>.
         /// </returns>
-        internal bool IsSameLogicalSilo([NotNullWhen(true)] ApplicationKernelAddress? other)
+        internal bool IsSameLogical([NotNullWhen(true)] ApplicationKernelAddress? other)
             => other != null && Endpoint.Address.Equals(other.Endpoint.Address) && Endpoint.Port == other.Endpoint.Port;
 
         /// <summary>
@@ -380,7 +381,7 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <returns>
         /// <see langword="true"/> if the provided value represents the same logical server as this value and is a successor to this server, otherwise <see langword="false"/>.
         /// </returns>
-        public bool IsSuccessorOf(ApplicationKernelAddress other) => IsSameLogicalSilo(other) && other.Generation > 0 && Generation > other.Generation;
+        public bool IsSuccessorOf(ApplicationKernelAddress other) => IsSameLogical(other) && other.Generation > 0 && Generation > other.Generation;
 
         /// <summary>
         /// Returns <see langword="true"/> if the provided value represents the same logical server as this value and is a predecessor to this server, otherwise <see langword="false"/>.
@@ -391,14 +392,14 @@ namespace Todd.Applicationkernel.Core.Abstractions
         /// <returns>
         /// <see langword="true"/> if the provided value represents the same logical server as this value and is a predecessor to this server, otherwise <see langword="false"/>.
         /// </returns>
-        public bool IsPredecessorOf(ApplicationKernelAddress other) => IsSameLogicalSilo(other) && Generation > 0 && Generation < other.Generation;
+        public bool IsPredecessorOf(ApplicationKernelAddress other) => IsSameLogical(other) && Generation > 0 && Generation < other.Generation;
 
         /// <inheritdoc/>
         public int CompareTo(ApplicationKernelAddress? other)
         {
             if (other == null) return 1;
             // Compare Generation first. It gives a cheap and fast way to compare, avoiding allocations 
-            // and is also semantically meaningful - older silos (with smaller Generation) will appear first in the comparison order.
+            // and is also semantically meaningful - older s (with smaller Generation) will appear first in the comparison order.
             // Only if Generations are the same, go on to compare Ports and IPAddress (which is more expansive to compare).
             // Alternatively, we could compare ConsistentHashCode or UniformHashCode.
             int comp = Generation.CompareTo(other.Generation);

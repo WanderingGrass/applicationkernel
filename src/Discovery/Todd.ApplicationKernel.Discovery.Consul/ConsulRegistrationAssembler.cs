@@ -9,7 +9,7 @@ using Todd.Applicationkernel.Core.Discovery;
 namespace Todd.ApplicationKernel.Discovery.Consul
 {
     [JsonObject]
-    public class ConsulSiloRegistration
+    public class ConsulRegistration
     {
         /// <summary>
         /// Persisted as part of the KV Key therefore not serialised.
@@ -27,7 +27,7 @@ namespace Todd.ApplicationKernel.Discovery.Consul
         /// Persisted in a separate KV Subkey, therefore not serialised but held here to enable cleaner assembly to MembershipEntry.
         /// </summary>
         /// <remarks>
-        /// Stored in a separate KV otherwise the regular updates to IAmAlive cause the Silo's KV.ModifyIndex to change 
+        /// Stored in a separate KV otherwise the regular updates to IAmAlive cause the 's KV.ModifyIndex to change 
         /// which in turn cause UpdateRow operations to fail.
         /// </remarks>
         [JsonIgnore]
@@ -53,7 +53,7 @@ namespace Todd.ApplicationKernel.Discovery.Consul
         public ApplicationKernelStatus Status { get; set; }
 
         [JsonProperty]
-        public string SiloName { get; set; }
+        public string Name { get; set; }
     }
     internal class ConsulRegistrationAssembler
     {
@@ -72,7 +72,7 @@ namespace Todd.ApplicationKernel.Discovery.Consul
                 },
                 Meta = new Dictionary<string, string>
                 {
-                    ["SiloName"] = entry.ApplicationKernelName,
+                    ["Name"] = entry.ApplicationKernelName,
                     ["HostName"] = entry.HostName
                 }
             };

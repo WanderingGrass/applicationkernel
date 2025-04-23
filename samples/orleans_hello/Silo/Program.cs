@@ -4,9 +4,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 
 IHostBuilder builder = Host.CreateDefaultBuilder(args)
-    .UseOrleans(silo =>
+    .UseOrleans( =>
     {
-        silo.UseLocalhostClustering()
+        .UseLocalhostClustering()
             .ConfigureLogging(logging => logging.AddConsole());
     })
     .UseConsoleLifetime();

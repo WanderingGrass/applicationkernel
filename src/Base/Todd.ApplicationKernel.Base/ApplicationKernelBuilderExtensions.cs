@@ -12,9 +12,9 @@ namespace Todd.ApplicationKernel.Base
         /// <summary>
         /// Adds services to the container. This can be called multiple times and the results will be additive.
         /// </summary>
-        /// <param name="builder">The <see cref="ISiloBuilder" /> to configure.</param>
+        /// <param name="builder">The <see cref="IBuilder" /> to configure.</param>
         /// <param name="configureDelegate"></param>
-        /// <returns>The same instance of the <see cref="ISiloBuilder"/> for chaining.</returns>
+        /// <returns>The same instance of the <see cref="IBuilder"/> for chaining.</returns>
         public static IApplicationKernelBuilder ConfigureServices(this IApplicationKernelBuilder builder, Action<IServiceCollection> configureDelegate)
         {
             ArgumentNullException.ThrowIfNull(configureDelegate);
@@ -26,9 +26,9 @@ namespace Todd.ApplicationKernel.Base
         /// Registers an action used to configure a particular type of options.
         /// </summary>
         /// <typeparam name="TOptions">The options type to be configured.</typeparam>
-        /// <param name="builder">The silo builder.</param>
+        /// <param name="builder">The  builder.</param>
         /// <param name="configureOptions">The action used to configure the options.</param>
-        /// <returns>The silo builder.</returns>
+        /// <returns>The  builder.</returns>
         public static IApplicationKernelBuilder Configure<TOptions>(this IApplicationKernelBuilder builder, Action<TOptions> configureOptions) where TOptions : class
         {
             return builder.ConfigureServices(services => services.Configure(configureOptions));
@@ -38,9 +38,9 @@ namespace Todd.ApplicationKernel.Base
         /// Registers a configuration instance which <typeparamref name="TOptions"/> will bind against.
         /// </summary>
         /// <typeparam name="TOptions">The options type to be configured.</typeparam>
-        /// <param name="builder">The silo builder.</param>
+        /// <param name="builder">The  builder.</param>
         /// <param name="configuration">The configuration.</param>
-        /// <returns>The silo builder.</returns>
+        /// <returns>The  builder.</returns>
         public static IApplicationKernelBuilder Configure<TOptions>(this IApplicationKernelBuilder builder, IConfiguration configuration) where TOptions : class
         {
             return builder.ConfigureServices(services => services.AddOptions<TOptions>().Bind(configuration));
@@ -48,9 +48,9 @@ namespace Todd.ApplicationKernel.Base
         /// <summary>
         /// Adds a delegate for configuring the provided <see cref="ILoggingBuilder"/>. This may be called multiple times.
         /// </summary>
-        /// <param name="builder">The <see cref="ISiloBuilder" /> to configure.</param>
+        /// <param name="builder">The <see cref="IBuilder" /> to configure.</param>
         /// <param name="configureLogging">The delegate that configures the <see cref="ILoggingBuilder"/>.</param>
-        /// <returns>The same instance of the <see cref="ISiloBuilder"/> for chaining.</returns>
+        /// <returns>The same instance of the <see cref="IBuilder"/> for chaining.</returns>
         public static IApplicationKernelBuilder ConfigureLogging(this IApplicationKernelBuilder builder, Action<ILoggingBuilder> configureLogging)
         {
             return builder.ConfigureServices(collection => collection.AddLogging(configureLogging));
