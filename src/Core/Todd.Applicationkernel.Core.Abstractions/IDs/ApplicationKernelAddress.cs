@@ -15,6 +15,9 @@ using System.Text.Json.Serialization;
 
 namespace Todd.Applicationkernel.Core.Abstractions
 {
+    /// <summary>
+    /// 应用核心地址
+    /// </summary>
     public sealed class ApplicationKernelAddress : IEquatable<ApplicationKernelAddress>, IComparable<ApplicationKernelAddress>, ISpanFormattable
     {
         [NonSerialized]
