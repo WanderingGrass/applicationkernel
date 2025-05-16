@@ -19,6 +19,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Base\Todd.ApplicationKernel.Serialization.Abstractions\Todd.ApplicationKernel.Serialization.Abstractions.csproj" />
+    <ProjectReference Include="..\Todd.ApplicationKernel.Serialization.Abstractions\Todd.ApplicationKernel.Serialization.Abstractions.csproj" />
   </ItemGroup>
+
 </Project>
