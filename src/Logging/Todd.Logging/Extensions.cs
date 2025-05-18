@@ -22,7 +22,7 @@ namespace Todd.ApplicationKernel.Logging;
 public static class Extensions
 {
     private const string LoggerSectionName = "logger";
-    private const string AppSectionName = "app";    
+    private const string AppSectionName = "app";
     internal static LoggingLevelSwitch LoggingLevelSwitch = new();
 
 
@@ -59,12 +59,12 @@ public static class Extensions
     {
         LoggingLevelSwitch.MinimumLevel = GetLogEventLevel(loggerOptions.Level);
 
-        loggerConfiguration.Enrich.FromLogContext()
-            .MinimumLevel.ControlledBy(LoggingLevelSwitch)
-            .Enrich.WithProperty("Environment", environmentName)
-            .Enrich.WithProperty("Application", appOptions.Service)
-            .Enrich.WithProperty("Instance", appOptions.Instance)
-            .Enrich.WithProperty("Version", appOptions.Version);
+        // loggerConfiguration.Enrich.FromLogContext()
+        //     .MinimumLevel.ControlledBy(LoggingLevelSwitch)
+        //     .Enrich.WithProperty("Environment", environmentName)
+        //     .Enrich.WithProperty("Application", appOptions.Service)
+        //     .Enrich.WithProperty("Instance", appOptions.Instance)
+        //     .Enrich.WithProperty("Version", appOptions.Version);
 
         foreach (var (key, value) in loggerOptions.Tags ?? new Dictionary<string, object>())
         {

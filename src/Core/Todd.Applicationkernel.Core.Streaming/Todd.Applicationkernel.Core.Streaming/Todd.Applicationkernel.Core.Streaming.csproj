@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="QueueBalancer\" />
+    <Compile Remove="QueueBalancer\**" />
+    <EmbeddedResource Remove="QueueBalancer\**" />
+    <None Remove="QueueBalancer\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,3 @@
-using Todd.ApplicationKernel.Tracing.Jaeger.Builders;
-using Todd.ApplicationKernel.Tracing.Jaeger.Tracers;
 using Jaeger;
 using Jaeger.Reporters;
 using Jaeger.Samplers;
@@ -12,6 +10,8 @@ using OpenTracing;
 using OpenTracing.Contrib.NetCore.Configuration;
 using OpenTracing.Util;
 using Todd.ApplicationKernel.Base;
+using Todd.ApplicationKernel.Tracing.Jaeger.Builders;
+using Todd.ApplicationKernel.Tracing.Jaeger.Tracers;
 
 namespace Todd.ApplicationKernel.Tracing.Jaeger;
 

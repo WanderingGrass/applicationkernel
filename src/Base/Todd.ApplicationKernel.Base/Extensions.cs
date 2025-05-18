@@ -19,13 +19,7 @@ public static class Extensions
         var options = builder.GetOptions<AppOptions>(sectionName);
         builder.Services.AddMemoryCache();
         services.AddSingleton(options);
-        services.AddSingleton<IServiceId, ServiceId>();
-        if (!options.DisplayBanner || string.IsNullOrWhiteSpace(options.Name))
-        {
-            return builder;
-        }
-        var version = options.DisplayVersion ? $" {options.Version}" : string.Empty;
-        Console.WriteLine(Figgle.FiggleFonts.Doom.Render($"{options.Name}{version}"));
+        //构建配置表
         return builder;
     }
 

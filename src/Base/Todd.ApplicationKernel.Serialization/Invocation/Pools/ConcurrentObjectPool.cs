@@ -11,6 +11,7 @@ namespace Todd.ApplicationKernel.Serialization.Invocation
 
     internal class ConcurrentObjectPool<T, TPoolPolicy> : ObjectPool<T> where T : class where TPoolPolicy : IPooledObjectPolicy<T>
     {
+        //避免线程间争用
         private readonly ThreadLocal<Stack<T>> _objects = new(() => new());
 
         private readonly TPoolPolicy _policy;
